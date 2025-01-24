@@ -1,0 +1,146 @@
+*{
+  margin: 0;
+  padding: 0;
+  font-family: 'Popping',sa;
+
+}
+
+@mixin prose($font-size, $margin, $bg-color) {
+  font-size: $font-size;
+  margin: $margin;
+  background-color : $bg-color;
+}
+
+$display: flex;
+$align-items: center;
+$justify-content: space-between;
+$main-font-size:Arial sans-serif;
+
+body{
+  @include prose(Arial sans-serif, 0, #f9f9f9);
+    overflow-x: hidden;
+    background-repeat: no-repeat;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+    background-color: rgba(152, 149, 149, 0.8); /* Adjust transparency */
+    background-blend-mode: multiply;
+    background-image: url(images/background.jpeg)
+    
+}
+
+.card{
+  width: 90%;
+  max-width: 470px;
+  background-color: rgba(255, 123, 229, 0.397); 
+  color: #fff;
+  margin: 100px auto 0;
+  border-radius: 20px;
+  padding: 40px 35px;
+  text-align: center;
+  border: 2px solid white;
+}
+
+
+.search{
+  background-color: rgba(255, 255, 255, 0); 
+  width: 100%;
+  display: $display;
+  align-items: $align-items;
+  justify-content: $justify-content;
+  gap: 10;
+
+
+ input{
+  border: 0;
+  outline: 0;
+  background: #ebfffc;
+  color: #000000;
+  padding: 15px;
+  border-radius: 30px;
+  flex: 1;
+  font-size: 18px;
+  
+
+}
+
+ button{
+  border: 0;
+  outline: 0;
+  background: #ffffff00;
+  color: #ffffff;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+  
+  img {
+    width: 30px;
+    margin-right: 0%;
+  }
+  
+
+}
+}
+.weather{
+  display: none;
+
+
+  .weather-icon{
+    width: 170px;
+    margin-top: 30px;
+    }
+  h1 {
+    font-size: 80px;
+    font-weight: 500;
+
+   }
+
+  h2{
+    font-size: 45px;
+    font-weight: 400;
+    margin-top: -10px;
+}
+}
+.details{
+  display: $display;
+  align-items: $align-items;
+  justify-content: $justify-content;
+  padding: 0 20px;
+  margin-top: 50px;
+
+}
+.col{
+  display: $display;
+  align-items: $align-items;
+  text-align: left;
+
+}
+
+.col img{
+  width: 55px;
+  margin-right: 10px;
+
+}
+
+.humidity, .wind{
+  font-size: 28px;
+  margin-top: -6px;
+}
+
+
+.error{
+  font-size: 25px;
+  margin-top: 10px;
+  display: none;
+  width: 100%;
+  font-weight: bold;
+  img{
+  margin: auto;
+  width: 50% ;
+  height: 50%;
+ 
+  }
+}
+
