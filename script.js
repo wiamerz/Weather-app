@@ -55,3 +55,87 @@ checkWeather(searchBox.value);
 })
 
 
+let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+
+const favoriteBtn = document.querySelector("#favorite");
+const favoritesList = document.querySelector("#favoritesList");
+
+function saveFavorites() {
+  localStorage.setItem('favorites', JSON.stringify(favorites));
+  renderFavorites();
+}
+
+
+
+
+
+function renderFavorites() {
+  favoritesList.innerHTML = '';
+  favorites.forEach(city => {
+    const li = document.createElement('li');
+    
+    // Create delete button
+    const deleteBtn = document.createElement('button');
+    deleteBtn.innerHTML = '<i class="bi bi-trash3-fill"></i>'
+    deleteBtn.addEventListener('click', () => {
+      favorites = favorites.filter(f => f !== city);
+      saveFavorites();
+    });
+
+    li.textContent = city;
+    li.appendChild(deleteBtn);
+    favoritesList.appendChild(li);
+  });
+}
+
+favoriteBtn.addEventListener("click", () => {
+  const currentCity = document.querySelector(".city").textContent;
+  
+  if (!favorites.includes(currentCity)) {
+    favorites.push(currentCity);
+    saveFavorites();
+  }
+});
+
+// Initial render of favorites
+renderFavorites();
+
+
+
+
+
+
+
+
+
+// // Add to existing script.js
+// let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+
+// const favoriteBtn = document.querySelector("#favorite");
+// const favoritesList = document.querySelector("#favoritesList");
+
+// function saveFavorites() {
+//   localStorage.setItem('favorites', JSON.stringify(favorites));
+//   renderFavorites();
+// }
+
+// function renderFavorites() {
+//   favoritesList.innerHTML = '';
+//   favorites.forEach(city => {
+//     const li = document.createElement('li');
+//     li.textContent = city;
+//     favoritesList.appendChild(li);
+//   });
+// }
+
+// favoriteBtn.addEventListener("click", () => {
+//   const currentCity = document.querySelector(".city").textContent;
+  
+//   if (!favorites.includes(currentCity)) {
+//     favorites.push(currentCity);
+//     saveFavorites();
+//   }
+// });
+
+// // Initial render of favorites
+// renderFavorites();

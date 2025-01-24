@@ -116,4 +116,24 @@ body {
   margin: auto;
   width: 50%;
   height: 50%;
+}
+
+.favorites {
+  margin-top: 20px;
+  text-align: center;
+}
+.favorites h3 {
+  color: #fff;
+  margin-bottom: 10px;
+}
+.favorites ul {
+  list-style-type: none;
+  padding: 0;
+}
+.favorites li {
+  background-color: rgb(244, 191, 245);
+  margin: 5px 0;
+  padding: 10px;
+  border-radius: 10px;
+  color: #fff;
 }/*# sourceMappingURL=style.css.map */
