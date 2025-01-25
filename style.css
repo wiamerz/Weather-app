@@ -16,13 +16,13 @@ body {
   background-size: cover;
   background-color: rgba(152, 149, 149, 0.8);
   background-blend-mode: multiply;
-  background-image: url(images/pc\ wallpapers.jpg);
+  background-image: url(images/back.jpg);
 }
 
 .card {
   width: 90%;
   max-width: 470px;
-  background-color: rgba(237, 134, 227, 0.473);
+  background-color: rgba(64, 84, 144, 0.8156862745);
   color: #fff;
   margin: 100px auto 0;
   border-radius: 20px;
@@ -141,7 +141,7 @@ body {
   padding: 0;
 }
 .favorites li {
-  background-color: rgba(237, 134, 227, 0.868);
+  background-color: rgba(64, 84, 144, 0.8156862745);
   margin: 5px 0;
   padding: 10px;
   border-radius: 10px;
