@@ -4,10 +4,12 @@ const apiurl = "https://api.openweathermap.org/data/2.5/weather?units=metric&q="
 
 const searchBox = document.querySelector(".search input");
 const searchBtn = document.querySelector(".search button");
-const weatherIcon = document.querySelector(".weather-icon")
+const weatherIcon = document.querySelector(".weather-icon");
+const favoriteBtn = document.querySelector("#favorite");
+const favoritesList = document.querySelector("#favoritesList");
 
 
-
+let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
 
 
 async function checkWeather(city){
@@ -16,15 +18,15 @@ async function checkWeather(city){
   if(response.status == 404){
     document.querySelector(".error").style.display="block";
     document.querySelector(".weather").style.display="none";
+  
   }else{
     var data = await response.json();
 
-    // console.log(data);
-  
     document.querySelector(".city").innerHTML = data.name;
     document.querySelector(".temp").innerHTML = Math.round(data.main.temp) + "°C";
     document.querySelector(".humidity").innerHTML = data.main.humidity+ "%";
     document.querySelector(".wind").innerHTML = data.wind.speed + "km/h";
+    document.querySelector(".condition").innerHTML = data.weather[0].description; 
   
     if(data.weather[0].main == "Clouds"){
         weatherIcon.src = "images/clouds.png";
@@ -50,23 +52,23 @@ async function checkWeather(city){
   
 }
 
+
 searchBtn.addEventListener("click",()=> {
 checkWeather(searchBox.value);
 })
 
 
-let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-
-const favoriteBtn = document.querySelector("#favorite");
-const favoritesList = document.querySelector("#favoritesList");
 
 function saveFavorites() {
   localStorage.setItem('favorites', JSON.stringify(favorites));
-  renderFavorites();
+  loadFavoritesCitiesWeather();
 }
 
-
-
+/*
+function saveFavorites() {
+  localStorage.setItem('favorites', JSON.stringify(favorites));
+  renderFavorites();
+}*/
 
 
 function renderFavorites() {
@@ -74,7 +76,7 @@ function renderFavorites() {
   favorites.forEach(city => {
     const li = document.createElement('li');
     
-    // Create delete button
+    
     const deleteBtn = document.createElement('button');
     deleteBtn.innerHTML = '<i class="bi bi-trash3-fill"></i>'
     deleteBtn.addEventListener('click', () => {
@@ -97,45 +99,43 @@ favoriteBtn.addEventListener("click", () => {
   }
 });
 
-// Initial render of favorites
-renderFavorites();
+
+/*renderFavorites(); */
 
 
+async function loadFavoritesCitiesWeather() {
+  const favoritesContainer = document.querySelector(".favorites ul");
+  favoritesContainer.innerHTML = ''; // Clear existing favorites
 
+  for (const city of favorites) {
+    try {
+      const response = await fetch(apiurl + city +`&appid=${apikey}`);
+      
+      if(response.status == 404){
+        console.log(`Weather not found for ${city}`);
+        continue;
+      }
+      
+      const data = await response.json();
+      const li = document.createElement('li');
+      
+      const citySpan = document.createElement('span');
+      citySpan.textContent = `${city}: ${Math.round(data.main.temp)}°C, ${data.weather[0].description}`;
+      
+      const deleteBtn = document.createElement('button');
+      deleteBtn.innerHTML = '<i class="bi bi-trash3-fill"></i>';
+      deleteBtn.addEventListener('click', () => {
+        favorites = favorites.filter(f => f !== city);
+        saveFavorites();
+      });
 
+      li.appendChild(citySpan);
+      li.appendChild(deleteBtn);
+      favoritesContainer.appendChild(li);
+    } catch (error) {
+      console.error(`Error fetching weather for ${city}:`, error);
+    }
+  }
+}
 
-
-
-
-
-// // Add to existing script.js
-// let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-
-// const favoriteBtn = document.querySelector("#favorite");
-// const favoritesList = document.querySelector("#favoritesList");
-
-// function saveFavorites() {
-//   localStorage.setItem('favorites', JSON.stringify(favorites));
-//   renderFavorites();
-// }
-
-// function renderFavorites() {
-//   favoritesList.innerHTML = '';
-//   favorites.forEach(city => {
-//     const li = document.createElement('li');
-//     li.textContent = city;
-//     favoritesList.appendChild(li);
-//   });
-// }
-
-// favoriteBtn.addEventListener("click", () => {
-//   const currentCity = document.querySelector(".city").textContent;
-  
-//   if (!favorites.includes(currentCity)) {
-//     favorites.push(currentCity);
-//     saveFavorites();
-//   }
-// });
-
-// // Initial render of favorites
-// renderFavorites();
+loadFavoritesCitiesWeather();

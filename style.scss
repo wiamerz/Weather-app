@@ -24,16 +24,16 @@ body{
     background-position: center;
     background-attachment: fixed;
     background-size: cover;
-    background-color: rgba(152, 149, 149, 0.8); /* Adjust transparency */
+    background-color: rgba(152, 149, 149, 0.8) ; 
     background-blend-mode: multiply;
-    background-image: url(images/background.jpeg)
+    background-image: url(images/pc\ wallpapers.jpg);
     
 }
 
 .card{
   width: 90%;
   max-width: 470px;
-  background-color: rgba(255, 123, 229, 0.397); 
+  background-color: rgba(237, 134, 227, 0.473) ; 
   color: #fff;
   margin: 100px auto 0;
   border-radius: 20px;
@@ -75,9 +75,11 @@ body{
   height: 60px;
   cursor: pointer;
   
-  img {
+  bi{
     width: 30px;
+    height: 30px;
     margin-right: 0%;
+    font-size: 100px;
   }
   
 
@@ -101,7 +103,16 @@ body{
     font-size: 45px;
     font-weight: 400;
     margin-top: -10px;
+  
 }
+
+h3{
+  font-size: 30px;
+  font-weight: 200;
+  margin-top: -10px;
+
+}
+  
 }
 .details{
   display: $display;
@@ -148,6 +159,9 @@ body{
 .favorites {
   margin-top: 20px;
   text-align: center;
+  width: 50%; 
+  max-width: 400px;  
+  margin: 0 auto;
 
   h3 {
     color: #fff;
@@ -160,10 +174,11 @@ body{
   }
 
   li {
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(237, 134, 227, 0.868) ;
     margin: 5px 0;
     padding: 10px;
     border-radius: 10px;
-    color: #fff;
+    color: #000000;
   }
 }
+
