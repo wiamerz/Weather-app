@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   font-family: "Popping", sa;
+  box-sizing: border-box;
 }
 
 body {
@@ -9,7 +10,6 @@ body {
   margin: 0;
   background-color: #f9f9f9;
   overflow-x: hidden;
-  background-repeat: no-repeat;
   background-repeat: no-repeat;
   background-position: center;
   background-attachment: fixed;
@@ -30,14 +30,28 @@ body {
   text-align: center;
   border: 2px solid white;
 }
+@media screen and (max-width: 600px) {
+  .card {
+    width: 95%;
+    margin: 20px auto;
+    padding: 20px 15px;
+    border-radius: 15px;
+  }
+}
 
 .search {
-  background-color: rgba(255, 255, 255, 0);
+  background-color: transparent;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 10;
+  gap: 10px;
+}
+@media screen and (max-width: 600px) {
+  .search {
+    flex-direction: column;
+    gap: 10px;
+  }
 }
 .search input {
   border: 0;
@@ -49,6 +63,13 @@ body {
   flex: 1;
   font-size: 18px;
 }
+@media screen and (max-width: 600px) {
+  .search input {
+    width: 100%;
+    font-size: 16px;
+    padding: 10px;
+  }
+}
 .search button {
   border: 0;
   outline: 0;
@@ -58,6 +79,12 @@ body {
   width: 60px;
   height: 60px;
   cursor: pointer;
+}
+@media screen and (max-width: 600px) {
+  .search button {
+    width: 50px;
+    height: 50px;
+  }
 }
 .search button bi {
   width: 30px;
@@ -73,19 +100,40 @@ body {
   width: 170px;
   margin-top: 30px;
 }
+@media screen and (max-width: 600px) {
+  .weather .weather-icon {
+    width: 120px;
+    margin-top: 20px;
+  }
+}
 .weather h1 {
   font-size: 80px;
   font-weight: 500;
+}
+@media screen and (max-width: 600px) {
+  .weather h1 {
+    font-size: 60px;
+  }
 }
 .weather h2 {
   font-size: 45px;
   font-weight: 400;
   margin-top: -10px;
 }
+@media screen and (max-width: 600px) {
+  .weather h2 {
+    font-size: 35px;
+  }
+}
 .weather h3 {
   font-size: 30px;
   font-weight: 200;
   margin-top: -10px;
+}
+@media screen and (max-width: 600px) {
+  .weather h3 {
+    font-size: 25px;
+  }
 }
 
 .details {
@@ -95,21 +143,43 @@ body {
   padding: 0 20px;
   margin-top: 50px;
 }
+@media screen and (max-width: 600px) {
+  .details {
+    flex-direction: column;
+    align-items: center;
+  }
+}
 
 .col {
   display: flex;
   align-items: center;
   text-align: left;
 }
-
+@media screen and (max-width: 600px) {
+  .col {
+    text-align: center;
+    margin-bottom: 15px;
+  }
+}
 .col img {
   width: 55px;
   margin-right: 10px;
+}
+@media screen and (max-width: 600px) {
+  .col img {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
 }
 
 .humidity, .wind {
   font-size: 28px;
   margin-top: -6px;
+}
+@media screen and (max-width: 600px) {
+  .humidity, .wind {
+    font-size: 24px;
+  }
 }
 
 .error {
@@ -132,6 +202,12 @@ body {
   max-width: 400px;
   margin: 0 auto;
 }
+@media screen and (max-width: 600px) {
+  .favorites {
+    width: 90%;
+    max-width: none;
+  }
+}
 .favorites h3 {
   color: #fff;
   margin-bottom: 10px;
@@ -139,6 +215,10 @@ body {
 .favorites ul {
   list-style-type: none;
   padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
 }
 .favorites li {
   background-color: rgba(64, 84, 144, 0.8156862745);
@@ -146,4 +226,23 @@ body {
   padding: 10px;
   border-radius: 10px;
   color: #000000;
+  flex-basis: calc(50% - 15px);
+  max-width: 300px;
+}
+@media screen and (max-width: 600px) {
+  .favorites li {
+    flex-basis: 100%;
+    max-width: none;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .favorite-weather-card .weather-icon {
+    width: 80px;
+  }
+  .favorite-weather-card .city, .favorite-weather-card .temp, .favorite-weather-card .condition {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
 }/*# sourceMappingURL=style.css.map */

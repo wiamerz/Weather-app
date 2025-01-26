@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   font-family: 'Popping',sa;
-
+  box-sizing: border-box;
 }
 
 @mixin prose($font-size, $margin, $bg-color) {
@@ -11,150 +11,203 @@
   background-color : $bg-color;
 }
 
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 $display: flex;
 $align-items: center;
 $justify-content: space-between;
-$main-font-size:Arial sans-serif;
+$main-font-size: Arial sans-serif;
 
-body{
+body {
   @include prose(Arial sans-serif, 0, #f9f9f9);
-    overflow-x: hidden;
-    background-repeat: no-repeat;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-attachment: fixed;
-    background-size: cover;
-    background-color: rgba(152, 149, 149, 0.8) ; 
-    background-blend-mode: multiply;
-    background-image: url(images/back.jpg);
-    
+  overflow-x: hidden;
+  background: {
+    repeat: no-repeat;
+    position: center;
+    attachment: fixed;
+    size: cover;
+    color: rgba(152, 149, 149, 0.8);
+    blend-mode: multiply;
+    image: url(images/back.jpg);
+  }
 }
 
-.card{
+.card {
   width: 90%;
   max-width: 470px;
-  background-color: #405490d0 ; 
+  background-color: #405490d0; 
   color: #fff;
   margin: 100px auto 0;
   border-radius: 20px;
   padding: 40px 35px;
   text-align: center;
   border: 2px solid white;
+
+  @media screen and (max-width: 600px) {
+    width: 95%;
+    margin: 20px auto;
+    padding: 20px 15px;
+    border-radius: 15px;
+  }
 }
 
-
-.search{
-  background-color: rgba(255, 255, 255, 0); 
+.search {
+  background-color: transparent;
   width: 100%;
   display: $display;
   align-items: $align-items;
   justify-content: $justify-content;
-  gap: 10;
+  gap: 10px;
 
-
- input{
-  border: 0;
-  outline: 0;
-  background: #ebfffc;
-  color: #000000;
-  padding: 15px;
-  border-radius: 30px;
-  flex: 1;
-  font-size: 18px;
-  
-
-}
-
- button{
-  border: 0;
-  outline: 0;
-  background: #ffffff00;
-  color: #ffffff;
-  border-radius: 50%;
-  width: 60px;
-  height: 60px;
-  cursor: pointer;
-  
-  bi{
-    width: 30px;
-    height: 30px;
-    margin-right: 0%;
-    font-size: 100px;
+  @media screen and (max-width: 600px) {
+    flex-direction: column;
+    gap: 10px;
   }
-  
 
+  input {
+    border: 0;
+    outline: 0;
+    background: #ebfffc;
+    color: #000000;
+    padding: 15px;
+    border-radius: 30px;
+    flex: 1;
+    font-size: 18px;
+
+    @media screen and (max-width: 600px) {
+      width: 100%;
+      font-size: 16px;
+      padding: 10px;
+    }
+  }
+
+  button {
+    border: 0;
+    outline: 0;
+    background: #ffffff00;
+    color: #ffffff;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+
+    @media screen and (max-width: 600px) {
+      width: 50px;
+      height: 50px;
+    }
+
+    bi {
+      width: 30px;
+      height: 30px;
+      margin-right: 0%;
+      font-size: 100px;
+    }
+  }
 }
-}
-.weather{
+
+.weather {
   display: none;
 
-
-  .weather-icon{
+  .weather-icon {
     width: 170px;
     margin-top: 30px;
+
+    @media screen and (max-width: 600px) {
+      width: 120px;
+      margin-top: 20px;
     }
+  }
+
   h1 {
     font-size: 80px;
     font-weight: 500;
 
-   }
+    @media screen and (max-width: 600px) {
+      font-size: 60px;
+    }
+  }
 
-  h2{
+  h2 {
     font-size: 45px;
     font-weight: 400;
     margin-top: -10px;
-  
+
+    @media screen and (max-width: 600px) {
+      font-size: 35px;
+    }
+  }
+
+  h3 {
+    font-size: 30px;
+    font-weight: 200;
+    margin-top: -10px;
+
+    @media screen and (max-width: 600px) {
+      font-size: 25px;
+    }
+  }
 }
 
-h3{
-  font-size: 30px;
-  font-weight: 200;
-  margin-top: -10px;
-
-}
-  
-}
-.details{
+.details {
   display: $display;
   align-items: $align-items;
   justify-content: $justify-content;
   padding: 0 20px;
   margin-top: 50px;
 
+  @media screen and (max-width: 600px) {
+    flex-direction: column;
+    align-items: center;
+  }
 }
-.col{
+
+.col {
   display: $display;
   align-items: $align-items;
   text-align: left;
 
+  @media screen and (max-width: 600px) {
+    text-align: center;
+    margin-bottom: 15px;
+  }
+
+  img {
+    width: 55px;
+    margin-right: 10px;
+
+    @media screen and (max-width: 600px) {
+      margin-right: 0;
+      margin-bottom: 10px;
+    }
+  }
 }
 
-.col img{
-  width: 55px;
-  margin-right: 10px;
-
-}
-
-.humidity, .wind{
+.humidity, .wind {
   font-size: 28px;
   margin-top: -6px;
+
+  @media screen and (max-width: 600px) {
+    font-size: 24px;
+  }
 }
 
-
-.error{
+.error {
   font-size: 25px;
   margin-top: 10px;
   display: none;
   width: 100%;
   font-weight: bold;
-  img{
-  margin: auto;
-  width: 50% ;
-  height: 50%;
- 
+
+  img {
+    margin: auto;
+    width: 50%;
+    height: 50%;
   }
 }
-
 
 .favorites {
   margin-top: 20px;
@@ -162,6 +215,11 @@ h3{
   width: 50%; 
   max-width: 400px;  
   margin: 0 auto;
+
+  @media screen and (max-width: 600px) {
+    width: 90%;
+    max-width: none;
+  }
 
   h3 {
     color: #fff;
@@ -171,14 +229,39 @@ h3{
   ul {
     list-style-type: none;
     padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
   }
 
   li {
-    background-color: #405490d0  ;
+    background-color: #405490d0;
     margin: 5px 0;
     padding: 10px;
     border-radius: 10px;
     color: #000000;
+    flex-basis: calc(50% - 15px);
+    max-width: 300px;
+
+    @media screen and (max-width: 600px) {
+      flex-basis: 100%;
+      max-width: none;
+    }
   }
 }
 
+// Responsive favorite weather cards
+.favorite-weather-card {
+  @media screen and (max-width: 600px) {
+    .weather-icon {
+      width: 80px;
+    }
+
+    .city, .temp, .condition {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+}
